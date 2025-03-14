@@ -26,11 +26,19 @@ mvn compile
 ```shell
 mvn exec:java -Dexec.mainClass="top.guoziyang.mydb.backend.Launcher" -Dexec.args="-create /tmp/mydb"
 ```
+windows下执行需要对exec.xxx外添加引号
+```shell
+mvn exec:java -D"exec.mainClass"="top.guoziyang.mydb.backend.Launcher" -D"exec.args"="-create H:\code\学习项目\MYDB\mydbtest\mydb"
+```
 
 随后通过以下命令以默认参数启动数据库服务：
 
 ```shell
 mvn exec:java -Dexec.mainClass="top.guoziyang.mydb.backend.Launcher" -Dexec.args="-open /tmp/mydb"
+```
+windows:
+```shell
+mvn exec:java -D"exec.mainClass"="top.guoziyang.mydb.backend.Launcher" -D"exec.args"="-open H:\code\学习项目\MYDB\mydbtest\mydb"
 ```
 
 这时数据库服务就已经启动在本机的 9999 端口。重新启动一个终端，执行以下命令启动客户端连接数据库：
@@ -38,7 +46,10 @@ mvn exec:java -Dexec.mainClass="top.guoziyang.mydb.backend.Launcher" -Dexec.args
 ```shell
 mvn exec:java -Dexec.mainClass="top.guoziyang.mydb.client.Launcher"
 ```
-
+windows:
+```shell
+mvn exec:java -D"exec.mainClass"="top.guoziyang.mydb.backend.Launcher"
+```
 会启动一个交互式命令行，就可以在这里输入类 SQL 语法，回车会发送语句到服务，并输出执行的结果。
 
 一个执行示例：
